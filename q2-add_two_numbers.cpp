@@ -42,8 +42,8 @@ class Solution
                 tail->next = newNode;
                 tail = tail->next;
 
-                l1= (l1 != nullptr) ? l1->next : nullptr;
-                l2 = (l1 != nullptr) ? l2->next: nullptr;
+                l1 = (l1 != nullptr) ? l1->next : nullptr;
+                l2 = (l2 != nullptr) ? l2->next: nullptr;
             }
             
             ListNode* result = dummyHead->next;
