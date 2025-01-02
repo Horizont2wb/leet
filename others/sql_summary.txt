@@ -1,0 +1,52 @@
+key concepts:
+	database: a collection of organized data stored in tables
+
+	table: a database object that presents data in columns and rows
+
+	column: a vertical entity in a table representing a specific field
+
+	row: a horizontal entity in a table
+
+basic sql commands:
+
+	select:
+		retrieves data from one or more tables
+
+	insert:
+		adds a new record/ row to a table
+
+	update:
+		modifies exisitng row in a table
+
+	delete:
+		removes a row from a table
+
+	create:
+		creates a new database, tables or other database objects
+
+	alter:
+		modifies the structure of existing database objects
+
+	drop:
+		deletes entire tables or databases
+
+
+sql query structure:
+
+
+	select: specifies the columns to retrieve
+	from: indicates the source table(s)
+	join: combines data from multiples tables
+	where: filters data based on conditions
+	group by: groups rows for aggregation
+	having: filters grouped data
+	order by: sorts the result set
+
+
+
+data types in sql:
+	numeric: (integer, decimal)
+	character/string: (varchar, char)
+	date and time (date,timestamp)
+
+
