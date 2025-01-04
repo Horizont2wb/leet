@@ -1,11 +1,32 @@
 y_pred = model.predict(X_test)
+	its taking the trained model, applying it to a set of test data (X_test)
+	and storing the resulting predictions in y_pred.
 
+	depending on the problem the result differ:
+		for binary classification:
+			number between 0 and 1
+
+		for regression problems:
+			outputs are numerical values (could be any real number)
+
+	
 model.coef_
+	represents the coefficients of a linear model.
+	It indicates the relationship between the input features and the target
+	variable
+
+
 model.intercept_
+	scalar value that represents the predicted value of the dependent variable.
+
 
 X_train_scaled = scaler.fit_transform(X_train)
+	used to scale or normalize the features in your training data
+
 
 model.score(X_train, y_train)
+	used to evaluate the performance of a trained ML model on the training data.
+	Returns a single float value representing the score
 
 
 model.fit(X_train.reshape(60000,28,28,1),
@@ -14,46 +35,147 @@ model.fit(X_train.reshape(60000,28,28,1),
 	batch_size = 1000
 
 )
+	reshapes the input data into a 4D array.
+	60000 number of training samples
+	28,28 image dimension (28x28 pixels)
+	1: Number of channels (1 for grayscale, 3 for RGB)
+
+	y_train, the target labels for the training data
+	epochs = 10: The model will iterate over the entire dataset 10 times during
+	training
+	batch_size = 1000: the model will process 1000 samples before updating its
+	internal parameters
 
 Conv2d?
+	used in CNN to process 2D iamge data
+	
 
 model.add(Flatten())
+	used in neural network, when transitioning from convolutional layers to dense
+	(fully connected) layers.
+
+	flattens the input, transforming a multi-dimensional tensor into a 1D array.
+	This is necessary to connect convolutional or pooling layers to dense layers
+
 
 model.compile(optimizer = "rmsprop", loss="categorical_crossentropy", metrics = ["accuracy"])
+	used to configure the model for training
+	RMSprop = Root Mean Square Propagation --> optimization algorithm
+
+	loss function measures the models performance during training
+	categorical_crossentropy is used for mulit-class classification problems
+
+	metrics specify which metrics to track during training and testing
+
 
 
 y_train = to_categorical(y_train)
+	converts a class vector to a binary class matrix.
+	used before feeding data into a neural network with a softmax output layer
+
+	matches the output format of models using categorical_crossentropy loss
+	
+	alows the model to learn to distinguish between multiple classes simultaneously	
+
 
 model.add(Conv2D(30,kernel_size=(3,3), activation = "relu", input_shape = (28,28,1)))
+	model.add adds a layer to the model
+	30 is the number of filters in the convolutional layer
+	kernel_size: specifies height and width of the 2D convolution window (here it 		is 3x3)
+	input_shpe: defines shape of the input data
+		28x28 pixel 
+		1 channel (grayscale images)
+
 
 
 model.layers
+	returns a list of all layers in a keras model.
+	provides access to all layers in the model
 
 
 result[0].shape
+	returns the dimennsions of the fist element in the array
 
-
-result[0][:,:,0]
 
 model.add(MaxPooling2d(pool_size=(2,2)))
+	adds a max pooling layer to a neural network model
+	MaxPooling2D: type of pooling layer which is used by CNNs
+	pool_size defines the size of the pooling window (here it's 2x2)
+
+
+	it reduces the spatial dimensions (height and width) of the input
+
+	helps to make features smaller and more manageable
+	reduces the number of parameters and computations in the network
+
+	unlike convolutional layers, pooling layers have no weights to train
+
 
 model.evaluate(X_test.reshape(-1,28,28,1), y_test)
+	evaluate method is used to evaluate the performance of a trained model
+	on a test dataset
+
+	reshape: reshapes the data into the format expected by the model
+
+	y_test: the true labels for the test data
+
+	output = it returns a list containing the loss value and the values of the 
+	metrics defined during model compilation (e.g. accuracy)
+
+
 
 model.add(Dropout(0,25))
+	adds a Dropout layer to the neural network model
+	Dropout prevents overfitting.
+	During training, it randomly set a raction of input units to 0 at each upate.
+	0,25 means 25% of the inputs will be randomly set to zero during each training
+	step.
 
+	makes the network robust by forcing it to learn with different neurons
 
 y_train = y_train == 0
+	used to convert the target labels in y_train into a binary format, specifically
+	for a binary classification problem.
+
+	creates boolean array. If the label is 0, the corresponding value in the new
+	array will be 'True', otherwise it will be 'False'
+
 
 model.add(Dense(100, activation = "sigmoid", input_shape(784,)))
+	Dense: creates a fully connected dense layer with 100 neurons
+	sigmoid functin outputs values between 0 and 1, making it suitable for binary
+	classification tasks or when you want to model probabilities.
 
+	input_shape: defines the shape of the input data that this layer will receive.
+	Here it indicates that each input sample has 784 features (28x28), which is 
+	typical for flattened 28x28 pixel images
 
 np.mean(np.round(y_train_pred).reshape(-1)==y_train)
+	np.round: rounds predicted values in y_train_pred to the nearest integer.
+	used often where sigmoid function has been previously used
+
+	reshape: flattens the array into a 1D array.
+		-1 argument tells NumPy to automatically determine the size of this
+		dimension based on the total number of elements.
+
 
 ypred = pd.Series(np.argmax(pred,axis=1), name='pred')
+	pred is expected to be a 2D aray (often output of a softmax layer)
+	function returns teh eindices of the maximum values along the specified axis
+	axis=1 means that it will find the index of the maximum value in each row.
+
+	
+
 
 pd.crosstab(ytrue,ypred)
+	evaluating the performance of aclassification model by comparing the true 
+	labels ytrue, with the predicted labels ypred 
+
 
 np.sum(pred[1])
+	computes the sum of the elements in the second row (index 1) of the array
+	np.sum: calculates the sum of all elements in the specified array
+
 
 
 
