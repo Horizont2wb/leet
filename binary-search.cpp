@@ -2,7 +2,8 @@
 #include <bits/stdc++.h>
 #include <iostream>
 using namespace std;
- 
+
+
 // An iterative binary search function.
 int binarySearch(int arr[], int l, int r, int x)
 {
