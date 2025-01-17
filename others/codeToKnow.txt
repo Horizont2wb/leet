@@ -9,7 +9,8 @@ y_pred = model.predict(X_test)
 		for regression problems:
 			outputs are numerical values (could be any real number)
 
-	
+
+
 model.coef_
 	represents the coefficients of a linear model.
 	It indicates the relationship between the input features and the target
