@@ -11,6 +11,7 @@ y_pred = model.predict(X_test)
 
 
 
+
 model.coef_
 	represents the coefficients of a linear model.
 	It indicates the relationship between the input features and the target
